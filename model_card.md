@@ -21,16 +21,18 @@ Prompts:
 
 ## 3. How the Model Works  
 
-Explain your scoring approach in simple language.  
+Think of it like a 100-point report card for every song, based on how well it matches your taste.
 
-Prompts:  
+Each song earns points in four categories:
 
-- What features of each song are used (genre, energy, mood, etc.)  
-- What user preferences are considered  
-- How does the model turn those into a score  
-- What changes did you make from the starter logic  
+- **Genre (40 points):** If the song's genre matches your favorite genre, it gets all 40 points. Otherwise, zero — genre is treated as an all-or-nothing match.
+- **Mood (30 points):** Same idea — if the song's mood matches your favorite mood, it gets all 30 points, otherwise zero.
+- **Energy (20 points):** This one isn't all-or-nothing. The model checks how close the song's energy level is to the energy you asked for, and gives partial credit the closer it gets. A song with energy almost exactly where you want it gets nearly all 20 points; a song that's way off gets very little.
+- **Acousticness (10 points):** Works the same way as energy — if you said you like (or don't like) acoustic songs, the model checks how close the song's acoustic level is to what you want and gives partial credit accordingly.
 
-Avoid code here. Pretend you are explaining the idea to a friend who does not program.
+All four scores are added up to get a final score out of 100. Songs are then sorted from highest to lowest score, and the top few are shown to you along with plain-language reasons (like "genre match (rock)" or "energy is close to your target") explaining why each one scored the way it did.
+
+The idea behind giving genre and mood more weight than energy and acousticness is that matching what kind of music and vibe you want matters more than fine-tuning the exact intensity or acoustic feel — but those still matter, so they're rewarded gradually rather than ignored.
 
 ---
 
